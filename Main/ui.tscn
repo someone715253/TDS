@@ -6,28 +6,47 @@
 script = ExtResource("1_x2nir")
 
 [node name="Health" type="Label" parent="." unique_id=1092862018]
-offset_right = 40.0
+offset_left = 1.0
+offset_right = 57.0
 offset_bottom = 23.0
+text = "Health:"
 
 [node name="Money" type="Label" parent="." unique_id=1691416540]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 1.0
+offset_top = 20.0
+offset_right = 58.0
+offset_bottom = 43.0
+text = "Money:"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1830324518]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 40.0
+offset_top = 1000.0
+offset_right = 176.0
+offset_bottom = 1040.0
 
 [node name="0_5x" type="Button" parent="HBoxContainer" unique_id=1602976165]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0.5x"
 
 [node name="1x" type="Button" parent="HBoxContainer" unique_id=2010161233]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "1x"
 
 [node name="2x" type="Button" parent="HBoxContainer" unique_id=1498106294]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "2x"
 
 [node name="4x" type="Button" parent="HBoxContainer" unique_id=2090657726]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "4x"
 
 [connection signal="pressed" from="HBoxContainer/0_5x" to="." method="_on_0_5x_pressed"]
 [connection signal="pressed" from="HBoxContainer/1x" to="." method="_on_1x_pressed"]

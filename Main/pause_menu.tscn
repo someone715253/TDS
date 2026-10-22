@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bypr6sk6mnnph"]
+
+[ext_resource type="Script" uid="uid://wmhsq6qdccku" path="res://Main/pause_menu.gd" id="1_oyd0v"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=114612931]
+
+[node name="PauseMenu" type="Control" parent="." unique_id=1414734960]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_oyd0v")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=84596961]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.13725491, 0.13725491, 0.13725491, 0.39215687)
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu" unique_id=226597074]
+layout_mode = 0
+offset_left = 722.5
+offset_top = 429.5
+offset_right = 1197.5
+offset_bottom = 656.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/MarginContainer" unique_id=1803196993]
+custom_maximum_size = Vector2(475, 221)
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer" unique_id=903662193]
+custom_minimum_size = Vector2(475, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 47
+text = "Resume"
+
+[node name="QuitTM" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer" unique_id=1670894834]
+custom_minimum_size = Vector2(475, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 47
+text = "Quit to main menu"
+
+[node name="Quit" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer" unique_id=1134406184]
+custom_minimum_size = Vector2(475, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 47
+text = "Quit to desktop"
+
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/QuitTM" to="PauseMenu" method="_on_quit_tm_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]

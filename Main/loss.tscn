@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://ct1x216tepbc6"]
+
+[ext_resource type="Script" uid="uid://bfnu55cg1mmhn" path="res://loss_menu.gd" id="1_aleha"]
+
+[node name="Loss" type="CanvasLayer" unique_id=2019964689]
+
+[node name="Loss menu" type="Control" parent="." unique_id=509178823]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_aleha")
+
+[node name="ColorRect" type="ColorRect" parent="Loss menu" unique_id=267949049]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.13725491, 0.13725491, 0.13725491, 0.39215687)
+
+[node name="MarginContainer" type="MarginContainer" parent="Loss menu" unique_id=1798644525]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 500.0
+offset_right = 1421.0
+offset_bottom = 794.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Loss menu/MarginContainer" unique_id=1396201968]
+layout_mode = 2
+
+[node name="QuitTM" type="Button" parent="Loss menu/MarginContainer/VBoxContainer" unique_id=1908810022]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Quit to main menu"
+
+[node name="Quit" type="Button" parent="Loss menu/MarginContainer/VBoxContainer" unique_id=1425318895]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Quit game"
+
+[node name="Label" type="Label" parent="Loss menu" unique_id=1579862039]
+layout_mode = 0
+offset_left = 753.0
+offset_top = 60.0
+offset_right = 1167.0
+offset_bottom = 197.0
+theme_override_font_sizes/font_size = 100
+text = "You Lost"
+
+[connection signal="pressed" from="Loss menu/MarginContainer/VBoxContainer/QuitTM" to="Loss menu" method="_on_quit_tm_pressed"]
+[connection signal="pressed" from="Loss menu/MarginContainer/VBoxContainer/Quit" to="Loss menu" method="_on_quit_pressed"]

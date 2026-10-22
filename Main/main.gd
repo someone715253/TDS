@@ -1,11 +1,19 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var pause_menu = $PauseMenu
+var paused = false
+func _process(delta: float) -> void: #checks if the pause button has been pressed
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func pauseMenu(): #allows the game to be paused
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = Game.time_scale
+	else:
+		pause_menu.show()
+		Game.time_scale = Engine.time_scale
+		Engine.time_scale = 0
+			
+	paused = !paused
