@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dx4vbmjo7ah3p"]
+
+[ext_resource type="Script" uid="uid://b612onxtl7l2f" path="res://Main/ui.gd" id="1_x2nir"]
+
+[node name="UI" type="CanvasLayer" unique_id=737455728]
+script = ExtResource("1_x2nir")
+
+[node name="Health" type="Label" parent="." unique_id=1092862018]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Money" type="Label" parent="." unique_id=1691416540]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1830324518]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="0_5x" type="Button" parent="HBoxContainer" unique_id=1602976165]
+layout_mode = 2
+
+[node name="1x" type="Button" parent="HBoxContainer" unique_id=2010161233]
+layout_mode = 2
+
+[node name="2x" type="Button" parent="HBoxContainer" unique_id=1498106294]
+layout_mode = 2
+
+[node name="4x" type="Button" parent="HBoxContainer" unique_id=2090657726]
+layout_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/0_5x" to="." method="_on_0_5x_pressed"]
+[connection signal="pressed" from="HBoxContainer/1x" to="." method="_on_1x_pressed"]
+[connection signal="pressed" from="HBoxContainer/2x" to="." method="_on_2x_pressed"]
+[connection signal="pressed" from="HBoxContainer/4x" to="." method="_on_4x_pressed"]

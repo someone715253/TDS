@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dtuauhe0a8f0u"]
+
+[sub_resource type="Curve2D" id="Curve2D_kdspi"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 160, 0, 0, 0, 0, 1760, 160, 0, 0, 0, 0, 1760, 544, 0, 0, 0, 0, 160, 544, 0, 0, 0, 0, 160, 928, 0, 0, 0, 0, 1920, 928)
+}
+point_count = 6
+
+[node name="Path2D" type="Path2D" unique_id=1442460551]
+curve = SubResource("Curve2D_kdspi")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=1323793221]
+position = Vector2(0, 160)
