@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b8gb77jqgtni2"]
+
+[ext_resource type="Script" uid="uid://bifo07vp3mpjc" path="res://Mobs/enemy_a.gd" id="1_0st7t"]
+[ext_resource type="Texture2D" uid="uid://bjngrafl3y5yw" path="res://Assets/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile245.png" id="2_duvxt"]
+[ext_resource type="Script" uid="uid://xme7pfinjkbe" path="res://Mobs/progress_bar.gd" id="3_up1lu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dttvr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dejrl"]
+bg_color = Color(0.7956364, 0.038355805, 0.04570146, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkimo"]
+bg_color = Color(0.48235294, 0.8862745, 0, 1)
+
+[node name="EnemyA" type="CharacterBody2D" unique_id=1892329943 groups=["Enemies"]]
+script = ExtResource("1_0st7t")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1011339763]
+texture_filter = 1
+texture = ExtResource("2_duvxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2011350834]
+shape = SubResource("CapsuleShape2D_dttvr")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=5029976]
+custom_maximum_size = Vector2(-1, 8)
+offset_left = -21.0
+offset_top = -38.0
+offset_right = 21.667
+offset_bottom = -30.0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_dejrl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fkimo")
+show_percentage = false
+script = ExtResource("3_up1lu")

@@ -10,4 +10,5 @@ point_count = 6
 curve = SubResource("Curve2D_kdspi")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=1323793221]
-position = Vector2(0, 160)
+position = Vector2(1919.9998, 928)
+progress = 5888.003

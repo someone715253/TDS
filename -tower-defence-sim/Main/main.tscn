@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://yb1hrd1afu60" path="res://Main/map.tscn" id="2_2w1kt"]
 [ext_resource type="PackedScene" uid="uid://dx4vbmjo7ah3p" path="res://Main/ui.tscn" id="3_eunhr"]
 [ext_resource type="PackedScene" uid="uid://bypr6sk6mnnph" path="res://Main/pause_menu.tscn" id="4_k3v36"]
+[ext_resource type="Script" uid="uid://dahj8aoyr6e7v" path="res://Main/pathspawner.gd" id="5_k3v36"]
 
 [node name="Main" type="Node2D" unique_id=414186792]
 script = ExtResource("1_2w1kt")
@@ -17,3 +18,11 @@ tile_map_data = PackedByteArray("AAAAAAIAAQABAAQAAAABAAIAAQABAAQAAAAAAAMAAQABAAU
 
 [node name="PauseMenu" parent="." unique_id=114612931 instance=ExtResource("4_k3v36")]
 visible = false
+
+[node name="Pathspawner" type="Node2D" parent="." unique_id=1647240404]
+script = ExtResource("5_k3v36")
+
+[node name="Timer" type="Timer" parent="Pathspawner" unique_id=441535230]
+autostart = true
+
+[connection signal="timeout" from="Pathspawner/Timer" to="Pathspawner" method="_on_timer_timeout"]
