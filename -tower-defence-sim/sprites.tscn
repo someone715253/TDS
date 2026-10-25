@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d2t75i7s7n2cx"]
+
+[ext_resource type="Texture2D" uid="uid://b8x276j41iprn" path="res://Assets/kenney_tower-defense-top-down/Tilesheet/towerDefense_tilesheet.png" id="1_i5r8b"]
+
+[node name="Sprites" type="Sprite2D" unique_id=252365922]
+position = Vector2(680, 262)
+texture = ExtResource("1_i5r8b")

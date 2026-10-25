@@ -1,32 +1,48 @@
 [gd_scene format=3 uid="uid://dx4vbmjo7ah3p"]
 
 [ext_resource type="Script" uid="uid://b612onxtl7l2f" path="res://Main/ui.gd" id="1_x2nir"]
+[ext_resource type="PackedScene" uid="uid://blrmrdt5hy53i" path="res://Towers/towerA/tower_a_panel.tscn" id="2_4x2x8"]
 [ext_resource type="Script" uid="uid://dhh05y3vnvxw2" path="res://Main/health.gd" id="2_r3moj"]
 [ext_resource type="Script" uid="uid://byx1odxjt0igt" path="res://Main/money.gd" id="3_qgkm5"]
 
 [node name="UI" type="CanvasLayer" unique_id=737455728]
 script = ExtResource("1_x2nir")
 
+[node name="Panel" type="Panel" parent="." unique_id=1680713420]
+offset_left = 1880.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="FlowContainer" type="FlowContainer" parent="Panel" unique_id=624577853]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 1080.0
+
+[node name="TowerAPanel" parent="Panel/FlowContainer" unique_id=222023233 instance=ExtResource("2_4x2x8")]
+layout_mode = 2
+
 [node name="Health" type="Label" parent="." unique_id=1092862018]
 offset_left = 1.0
 offset_right = 57.0
 offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
 text = "Health:"
 script = ExtResource("2_r3moj")
 
 [node name="Money" type="Label" parent="." unique_id=1691416540]
 offset_left = 1.0
-offset_top = 20.0
-offset_right = 58.0
-offset_bottom = 43.0
+offset_top = 36.0
+offset_right = 115.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 32
 text = "Money:"
 script = ExtResource("3_qgkm5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1830324518]
 offset_left = 40.0
-offset_top = 1000.0
-offset_right = 176.0
-offset_bottom = 1040.0
+offset_top = 977.0
+offset_right = 269.0
+offset_bottom = 1027.0
 
 [node name="0_5x" type="Button" parent="HBoxContainer" unique_id=1602976165]
 custom_minimum_size = Vector2(50, 0)

@@ -15,6 +15,7 @@ script = ExtResource("1_oyd0v")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 color = Color(0.13725491, 0.13725491, 0.13725491, 0.39215687)
 
 [node name="MarginContainer" type="MarginContainer" parent="PauseMenu" unique_id=226597074]
