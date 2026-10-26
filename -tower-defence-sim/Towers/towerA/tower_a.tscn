@@ -1,28 +1,33 @@
 [gd_scene format=3 uid="uid://bmyh7bhcbt7ux"]
 
-[ext_resource type="Texture2D" uid="uid://dyld0y2hito6l" path="res://Assets/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile249.png" id="1_qh43o"]
+[ext_resource type="Script" uid="uid://cfbgrf8njsqch" path="res://Towers/towerA/collision_shape_2d.gd" id="1_s1glw"]
 [ext_resource type="Texture2D" uid="uid://dix0wrmpbxmkm" path="res://Assets/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile296.png" id="2_6umi7"]
+[ext_resource type="Texture2D" uid="uid://dlm8ryc5asajw" path="res://Towers/towerA/pixil-frame-0 (4).png" id="2_s1glw"]
 [ext_resource type="Script" uid="uid://ns6yd8gebyqi" path="res://Towers/towerA/progress_bar.gd" id="3_s1glw"]
 
 [sub_resource type="GDScript" id="GDScript_piego"]
 script/source = "extends StaticBody2D
 
+var a = preload(\"res://Towers/towerA/pixil-frame-0 (3).png\")
+var b = preload(\"res://Towers/towerA/pixil-frame-0 (4).png\")
+var c = preload(\"res://Towers/towerA/pixil-frame-0.png\")
 var Bullet = preload(\"res://Towers/Bullets/BulletA/bullet.tscn\")
-var bulletDamage = 5
+var bulletDamage = 0.5
 var pathName
 var currentTargets = []
 var current
-var reload = 0
-var range = 600
+var reload = 2.95
+var range = 200
 var tier = 0
-var spent = 10
+var spent = 100
 var is_preview = false
 var stats = [
-	{\"bulletDamage\":5, \"range\": 600, \"reload\": 0.0, \"upgrade_cost\": 0},
-	{\"bulletDamage\":5, \"range\": 300, \"reload\": 0.0, \"upgrade_cost\": 0},
-	{\"bulletDamage\":5, \"range\": 300, \"reload\": 0.0, \"upgrade_cost\": 0},
-	{\"bulletDamage\":5, \"range\": 300, \"reload\": 0.0, \"upgrade_cost\": 0},
-	{\"bulletDamage\":5, \"range\": 300, \"reload\": 0.0, \"upgrade_cost\": 0},
+	{\"bulletDamage\":0.5, \"range\": 200, \"reload\": 2.95, \"upgrade_cost\": 0},
+	{\"bulletDamage\":5, \"range\": 300, \"reload\": 2.5, \"upgrade_cost\": 100},
+	{\"bulletDamage\":10, \"range\": 350, \"reload\": 2, \"upgrade_cost\": 50},
+	{\"bulletDamage\":15, \"range\": 400, \"reload\": 2, \"upgrade_cost\": 150},
+	{\"bulletDamage\":25, \"range\": 500, \"reload\": 2.5, \"upgrade_cost\": 00},
+	{\"bulletDamage\":50, \"range\": 600, \"reload\": 2.9, \"upgrade_cost\": 00},
 ]
 
 @onready var timer = get_node(\"Upgrade/ProgressBar/Timer\")
@@ -30,6 +35,8 @@ var startShooting = false
 
 func _ready() -> void:
 	get_node(\"Upgrade/Upgrade\").hide()
+	$TowerSprite.texture = a
+	$TowerSprite.offset = Vector2(11,0)
 	update_powers()
 	
 func _process(delta):
@@ -83,6 +90,15 @@ func update_powers():
 		get_node(\"Upgrade/Upgrade/Range\").text = \"Range: %s\" % range
 		get_node(\"Upgrade/Upgrade/Damage\").text = \"Damage: %s\" % bulletDamage
 		get_node(\"Upgrade/Upgrade/Upgradebutton/Label\").text = \"MAX\"
+	if tier == 0:
+		$TowerSprite.texture = a
+		$TowerSprite.offset = Vector2(11,0)
+	elif tier > 0 && tier < 4:
+		$TowerSprite.texture = b
+		$TowerSprite.offset = Vector2(47,0)
+	elif tier >= 4:
+		$TowerSprite.texture = c
+		$TowerSprite.offset = Vector2(28,0)
 		
 	get_node(\"Tower/CollisionShape2D\").shape.radius = range
 
@@ -132,7 +148,6 @@ func _on_tower_body_exited(body: Node2D) -> void:
 
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	print(\"clicked\")
 	if event is InputEventMouseButton and event.button_mask == 1:
 		var towerPath = get_tree().get_root().get_node(\"/root/Main/Towers\")
 		for i in towerPath.get_child_count():
@@ -213,6 +228,7 @@ script = SubResource("GDScript_piego")
 [node name="BulletContainer" type="Node" parent="." unique_id=1525041272]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=689798987]
+visible = false
 position = Vector2(-10, 0)
 shape = SubResource("RectangleShape2D_inbnb")
 
@@ -220,11 +236,14 @@ shape = SubResource("RectangleShape2D_inbnb")
 position = Vector2(32, 0)
 
 [node name="Tower" type="Area2D" parent="." unique_id=1210049784]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tower" unique_id=1943573720]
 shape = SubResource("CircleShape2D_ljbtc")
+script = ExtResource("1_s1glw")
 
 [node name="TowerDetector" type="Area2D" parent="." unique_id=1045903374]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetector" unique_id=614862410]
 position = Vector2(-10, 0)
@@ -232,8 +251,8 @@ shape = SubResource("RectangleShape2D_5tw0p")
 
 [node name="TowerSprite" type="Sprite2D" parent="." unique_id=519315051]
 texture_filter = 1
-rotation = 1.5707964
-texture = ExtResource("1_qh43o")
+texture = ExtResource("2_s1glw")
+offset = Vector2(47, 0)
 
 [node name="Area" type="Panel" parent="." unique_id=2090466629]
 modulate = Color(0, 0, 0.3137255, 0.15686275)
@@ -243,6 +262,7 @@ offset_right = 200.0
 offset_bottom = 200.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cqb5v")
+metadata/_edit_use_anchors_ = true
 
 [node name="Upgrade" type="Node" parent="." unique_id=1262966132]
 
@@ -253,6 +273,7 @@ offset_top = 40.0
 offset_right = 144.0
 offset_bottom = 136.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_iugsg")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sell" type="Button" parent="Upgrade/Upgrade" unique_id=2145143336]
 layout_mode = 0
@@ -262,6 +283,7 @@ offset_right = 282.0
 offset_bottom = 90.5
 theme_override_font_sizes/font_size = 8
 text = "SELL"
+metadata/_edit_use_anchors_ = true
 
 [node name="Upgradebutton" type="Button" parent="Upgrade/Upgrade" unique_id=1479057939]
 layout_mode = 0
@@ -269,6 +291,7 @@ offset_left = 102.0
 offset_top = 7.5
 offset_right = 182.0
 offset_bottom = 85.5
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Upgrade/Upgrade/Upgradebutton" unique_id=872131584]
 position = Vector2(41, 39.5)
@@ -280,6 +303,7 @@ offset_top = 4.0
 offset_right = 80.0
 offset_bottom = 16.0
 theme_override_font_sizes/font_size = 8
+metadata/_edit_use_anchors_ = true
 
 [node name="FireRate" type="Label" parent="Upgrade/Upgrade" unique_id=1543962317]
 layout_mode = 0
@@ -289,6 +313,7 @@ offset_right = 42.0
 offset_bottom = 63.5
 theme_override_font_sizes/font_size = 8
 text = "a"
+metadata/_edit_use_anchors_ = true
 
 [node name="Range" type="Label" parent="Upgrade/Upgrade" unique_id=1958624361]
 layout_mode = 0
@@ -298,6 +323,7 @@ offset_right = 46.0
 offset_bottom = 39.5
 theme_override_font_sizes/font_size = 8
 text = "a"
+metadata/_edit_use_anchors_ = true
 
 [node name="Damage" type="Label" parent="Upgrade/Upgrade" unique_id=1963639271]
 layout_mode = 0
@@ -307,6 +333,7 @@ offset_right = 46.0
 offset_bottom = 51.5
 theme_override_font_sizes/font_size = 8
 text = "a"
+metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="Upgrade" unique_id=364753989]
 offset_left = -60.0
@@ -318,9 +345,10 @@ theme_override_styles/background = SubResource("StyleBoxFlat_s1glw")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6umi7")
 show_percentage = false
 script = ExtResource("3_s1glw")
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="Upgrade/ProgressBar" unique_id=1134490833]
-wait_time = 3.0
+wait_time = 0.05
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="body_entered" from="Tower" to="." method="_on_tower_body_entered"]

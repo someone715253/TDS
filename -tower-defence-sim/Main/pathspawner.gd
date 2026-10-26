@@ -12,10 +12,10 @@ func _on_timer_timeout() -> void:
 	add_child(temppath)	
 	var follow = temppath.get_node("PathFollow2D")
 	var enemy_scene
-	if Game.time_b<70: 
-		var rng = randi() % 100
+	#if Game.time_b<70: 
+	var rng = randi() % 100
 		#if rng<=79:
-		enemy_scene = EnemyA 
+	enemy_scene = EnemyA 
 #		else:
 #			enemy_scene = EnemyB
 #	elif Game.time_b<150:

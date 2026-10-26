@@ -9,16 +9,17 @@
 script = ExtResource("1_x2nir")
 
 [node name="Panel" type="Panel" parent="." unique_id=1680713420]
-offset_left = 1880.0
+offset_left = 1840.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="FlowContainer" type="FlowContainer" parent="Panel" unique_id=624577853]
 layout_mode = 0
-offset_right = 40.0
+offset_right = 80.0
 offset_bottom = 1080.0
 
 [node name="TowerAPanel" parent="Panel/FlowContainer" unique_id=222023233 instance=ExtResource("2_4x2x8")]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 
 [node name="Health" type="Label" parent="." unique_id=1092862018]

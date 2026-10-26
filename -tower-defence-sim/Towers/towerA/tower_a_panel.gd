@@ -14,7 +14,7 @@ func _get_valid_targets(preview_tower: Node) -> Array:
 
 
 func _on_gui_input(event):
-	if Game.money >= 10:
+	if Game.money >= 100:
 		var tempTower = tower.instantiate()
 		if event is InputEventMouseButton and event.button_mask == 1:
 			add_child(tempTower)
@@ -35,7 +35,7 @@ func _on_gui_input(event):
 				else:
 					get_child(1).get_node("Area").modulate = Color(255, 255, 255, 0.251)
 		elif event is InputEventMouseButton and event.button_mask == 0:
-			if event.global_position.x >= 1880:
+			if event.global_position.x >= 1840:
 				if get_child_count() > 1:
 					get_child(1).queue_free()
 			else:
@@ -50,10 +50,10 @@ func _on_gui_input(event):
 					path.add_child(tempTower)
 					tempTower.is_preview = false
 					tempTower.global_position = event.global_position
-					tempTower.get_node("Area").hide
-					Game.money -= 10
+					tempTower.get_node("Area").hide()
+					Game.money -= 100
 		else :
 			if get_child_count() > 1:
-				get_child(1).queue_free
+				get_child(1).queue_free()
 				
 				

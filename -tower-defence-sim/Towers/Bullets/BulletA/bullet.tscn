@@ -1,23 +1,24 @@
 [gd_scene format=3 uid="uid://srocskhn5l2c"]
 
 [ext_resource type="Script" uid="uid://bmhb3lkqhg5u0" path="res://Towers/Bullets/BulletA/bullet.gd" id="1_biqqm"]
-[ext_resource type="Texture2D" uid="uid://bk5bg7ygofran" path="res://Assets/kenney_tower-defense-top-down/PNG/Default size/towerDefense_tile297.png" id="2_bi8ty"]
+[ext_resource type="Texture2D" uid="uid://dqbmqdamgligy" path="res://Towers/towerA/pixil-frame-0 (2).png" id="2_bxwvu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dttvr"]
 radius = 8.0
-height = 36.0
+height = 56.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dejrl"]
 radius = 11.0
-height = 42.0
+height = 64.0
 
 [node name="Bullet" type="CharacterBody2D" unique_id=260392500]
+collision_mask = 0
 script = ExtResource("1_biqqm")
 
 [node name="BulletSprite" type="Sprite2D" parent="." unique_id=1040024976]
 texture_filter = 1
-rotation = 4.712389
-texture = ExtResource("2_bi8ty")
+texture = ExtResource("2_bxwvu")
+offset = Vector2(-1.5, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=188716980]
 rotation = 1.5707964

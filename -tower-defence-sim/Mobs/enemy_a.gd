@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 		Game.health -= 1
 		death()
 	if Health <= 0:
-		Game.money += 1
+		Game.money += 5
 		death()
 		return
 		
